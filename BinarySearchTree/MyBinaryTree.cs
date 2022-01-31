@@ -8,7 +8,7 @@ namespace BinarySearchTree
 {
     public class MyBinaryTree<T> where T : IComparable
     {
-        //Variable.
+        //Variable
         public INode<T> root;
         public void CreateNode(T value)
         {
@@ -45,7 +45,7 @@ namespace BinarySearchTree
                 }
             }
         }
-        //Display Root Node.
+        //Method to display Root Node
         public void Root()
         {
             do
@@ -54,7 +54,7 @@ namespace BinarySearchTree
                 break;
             } while (root != null);
         }
-        //Method to Display Nodes in binary search tree
+        //Method to display Nodes in binary search tree
 
         public void Display(INode<T> parent)
         {
@@ -72,6 +72,26 @@ namespace BinarySearchTree
                 return 0;
             else
                 return (Size(root.left) + 1 + Size(root.right));
+        }
+        //Method to Search the specified key in binary search tree
+        public bool Search(INode<T> root, T key)
+        {
+            if (root == null)
+            {
+                return false;
+            }
+            if (root.data.CompareTo(key) == 0)
+            {
+                return true;
+            }
+            else if (root.data.CompareTo(key) > 0)
+            {
+                return Search(root.left, key);
+            }
+            else
+            {
+                return Search(root.right, key);
+            }
         }
     }
 }
